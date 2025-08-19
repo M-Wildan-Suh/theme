@@ -1,4 +1,4 @@
-@props(['phone' => null, 'value' => null , 'title' => null, 'name' => null])
+@props(['phone' => [], 'value' => null , 'title' => null, 'name' => null])
 <div class="flex flex-col gap-2">
     <label class="font-medium text-sm sm:text-base">{{$title}}</label>
     <select class="no-tlp-one" name="{{$name}}" multiple="multiple">

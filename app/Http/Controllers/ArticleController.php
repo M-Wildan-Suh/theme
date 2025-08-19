@@ -172,12 +172,6 @@ class ArticleController extends Controller
      */
     public function index(Request $request, $status = null, $filtercat = null)
     {
-        $count = new \stdClass();
-        $count->all = $this->formatCount(ArticleShow::count());
-        $count->schedule = $this->formatCount(ArticleShow::where('status', 'schedule')->count());
-        $count->publish = $this->formatCount(ArticleShow::where('status', 'publish')->count());
-        $count->private = $this->formatCount(ArticleShow::where('status', 'private')->count());
-
         $category = ArticleCategory::all();
         
         $filter = $status === 'schedule' ? 1 : 0;
@@ -211,17 +205,11 @@ class ArticleController extends Controller
             return view('admin.article.row', compact('data'))->render();
         }
 
-        return view('admin.article.index' ,compact('data', 'category', 'count', 'status', 'filtercat'));
+        return view('admin.article.index' ,compact('data', 'category', 'status', 'filtercat'));
     }
 
     public function indexspintax(Request $request, $status = null, $filtercat = null)
     {
-        $count = new \stdClass();
-        $count->all = $this->formatCount(ArticleShow::count());
-        $count->schedule = $this->formatCount(ArticleShow::where('status', 'schedule')->count());
-        $count->publish = $this->formatCount(ArticleShow::where('status', 'publish')->count());
-        $count->private = $this->formatCount(ArticleShow::where('status', 'private')->count());
-
         $category = ArticleCategory::all();
         
         $filter = $status === 'schedule' ? 1 : 0;
@@ -255,17 +243,11 @@ class ArticleController extends Controller
             return view('admin.article.row', compact('data'))->render();
         }
 
-        return view('admin.article.index' ,compact('data', 'category', 'count', 'status', 'filtercat'));
+        return view('admin.article.index' ,compact('data', 'category', 'status', 'filtercat'));
     }
     
     public function indexunique(Request $request, $status = null, $filtercat = null)
     {
-        $count = new \stdClass();
-        $count->all = $this->formatCount(ArticleShow::count());
-        $count->schedule = $this->formatCount(ArticleShow::where('status', 'schedule')->count());
-        $count->publish = $this->formatCount(ArticleShow::where('status', 'publish')->count());
-        $count->private = $this->formatCount(ArticleShow::where('status', 'private')->count());
-
         $category = ArticleCategory::all();
         
         $filter = $status === 'schedule' ? 1 : 0;
@@ -299,7 +281,7 @@ class ArticleController extends Controller
             return view('admin.article.row', compact('data'))->render();
         }
 
-        return view('admin.article.index' ,compact('data', 'category', 'count', 'status', 'filtercat'));
+        return view('admin.article.index' ,compact('data', 'category', 'status', 'filtercat'));
     }
 
     public function spin($id, Request $request) 
@@ -318,7 +300,7 @@ class ArticleController extends Controller
             })
             ->paginate(10);
 
-        return view('admin.article.index-spin', compact('article', 'data', 'count'));
+        return view('admin.article.index-spin', compact('article', 'data'));
     }
 
     /**
